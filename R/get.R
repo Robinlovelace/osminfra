@@ -86,5 +86,49 @@ preset_queries = list(
  (cycleway_right in ('lane', 'shared_busway')) or
  (cycleway_both='lane') or
  (cycleway='lane')
- "
+ ",
+  # traffic-free cycle routes
+  cycle_traffic_free = "select * from 'lines' where
+ (highway='cycleway')
+ ",
+  # cycle lanes (on-road)
+  cycle_lane = "select * from 'lines' where
+ (cycleway='opposite' and oneway_bicycle='no') or
+ (cycleway_left='track') or
+ (cycleway_right='track') or
+ (cycleway_both='track') or
+ (cycleway in ('lane', 'opposite_lane', 'track', 'opposite_track')) or
+ (cycleway_left='lane') or
+ (cycleway_right='lane') or
+ (cycleway_both='lane')
+ ",
+  # pedestrian paths with cycling (excluding some unpaved paths)
+  cycle_path = "select * from 'lines' where
+ (sidewalk_left_bicycle='yes') or
+ (sidewalk_right_bicycle='yes') or
+ (highway='path' and (bicycle in ('yes', 'official', 'designated')) and surface<>'unpaved') or
+ (highway='pedestrian' and (bicycle in ('yes', 'official', 'designated'))) or
+ (highway='footway' and (bicycle in ('yes', 'official', 'designated'))) or
+ (bicycle='use_sidepath')
+",
+  # cycle routes (can follow roads)
+  cycle_route = "select * from 'lines' where
+(route='bicycle') or
+(lcn='yes') or
+(rcn='yes') or
+(ncn='yes') or
+(network='lcn') or
+(network='rcn') or
+(network='ncn')
+",
+  # other cycle infrastructure
+  cycle_other = "select * from 'lines' where
+ (cycleway_left='shared_lane') or
+ (cycleway_right='shared_lane') or
+ (cycleway_left='shared_busway') or
+ (cycleway_right='shared_busway') or
+ (cycleway='shared_busway') or
+ (cycleway='shared_lane') or
+ (bicycle='designated')
+"
   )
