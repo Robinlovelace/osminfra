@@ -44,7 +44,13 @@ et = c(
   "cycleway_right",
   "oneway_bicycle",
   "sidewalk_right_bicycle",
-  "cycleway_both"
+  "cycleway_both",
+  "surface",
+  "route",
+  "lcn",
+  "rcn",
+  "ncn",
+  "network"
 )
 
 # could be a data object
@@ -53,12 +59,10 @@ preset_queries = list(
   cycle_infrastructure_minimal = "select * from 'lines' where (sidewalk_left_bicycle='yes') or
  (cycleway='shared_busway') or
  (cycleway='opposite_lane') or
- (highway='bridleway' and bicycle='no') or
  (bicycle='use_sidepath') or
  (highway='path') or
  (highway='path' and (bicycle='designated' or bicycle='official')) or
  (highway='pedestrian' and (bicycle='yes' or bicycle='official')) or
- (highway='footway') or
  (highway='cycleway') or
  (cycleway in ('lane', 'opposite_lane', 'shared_busway', 'track', 'opposite_track')) or
  (cycleway='lane')
@@ -69,7 +73,6 @@ preset_queries = list(
  (cycleway_right='shared_busway') or
  (cycleway='shared_busway') or
  (cycleway='opposite_lane') or
- (highway='bridleway' and bicycle='no') or
  (bicycle='use_sidepath') or
  (cycleway='opposite' and oneway_bicycle='no') or
  (sidewalk_right_bicycle='yes') or
@@ -79,7 +82,6 @@ preset_queries = list(
  (highway='path') or
  (highway='path' and (bicycle='designated' or bicycle='official')) or
  (highway='pedestrian' and (bicycle='yes' or bicycle='official')) or
- (highway='footway') or
  (highway='cycleway') or
  (cycleway in ('lane', 'opposite_lane', 'shared_busway', 'track', 'opposite_track')) or
  (cycleway_left in ('lane', 'shared_busway')) or
